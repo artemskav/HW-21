@@ -1,6 +1,5 @@
 from exceptions import NoValidSpace
 
-
 class Requests:
 
     def __init__(self, input_string: list):

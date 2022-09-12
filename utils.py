@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from exceptions import NotFreeSpace, NotFreeForItems, NotNecessaryQuantuty, NotThisProduct
 
+simafor = True
+
 class Storage(ABC):
 
     @abstractmethod
@@ -28,10 +30,15 @@ class Store(Storage):
     __capacity = 100
 
     def add(self, title, quantity: int):
-        if title in self.__items and self._get_free_space() >= quantity:
+        if self._get_free_space() < quantity:
+            raise NotFreeSpace
+        elif len(self.__items) == 0:
+            self.__items[title] = quantity
+            return True
+        elif title in self.__items:
             self.__items[title] += quantity
             return True
-        else:
+        elif title not in self.__items:
             self.__items[title] = quantity
             return True
 
