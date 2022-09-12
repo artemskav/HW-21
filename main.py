@@ -5,14 +5,14 @@ from service import Requests
 from utils import Shop, Store
 
 print("\nВас приветствует логистическая программа!\n")
-sim = True
+sim = False
 shop = Shop()
 store = Store()
 
 while True:
     input_string = input("\nВведите строку формата \'**Доставить**"
-                     " 3 печеньки **из** склад **в** магазин\' или СТОП/STOP "
-                     "для окончания ввода\n").lower()
+                         " 3 печеньки **из** склад **в** магазин\' или СТОП/STOP "
+                         "для окончания ввода\n").lower()
     enter_value = input_string.split(" ")
     if input_string in ["stop", "стоп"]:
         print("Завершение работы")
@@ -25,14 +25,10 @@ while True:
             req = Requests(enter_value)
             data = req.departure_destination()
             if data['from'] == 'магазин':
-                store.add(enter_value[2], int(enter_value[1]))
-#                global sim
-                if sim:
+                if store.add(enter_value[2], int(enter_value[1])):
                     shop.remove(enter_value[2], int(enter_value[1]))
             else:
-                shop.add(enter_value[2], int(enter_value[1]))
-#                global sim
-                if sim:
+                if shop.add(enter_value[2], int(enter_value[1])):
                     store.remove(enter_value[2], int(enter_value[1]))
             print(f"Курьер забирает {data['amount']} {data['product']} из {data['from']}")
             print(f"Курьер везет {enter_value[1]} {enter_value[2]} с {enter_value[4]} в {enter_value[6]}")
@@ -54,6 +50,6 @@ while True:
         except NoValidSpace as error:
             print(error.message)
         continue
-#
-# if __name__ == "__main__":
-#     app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run(debug=True)
