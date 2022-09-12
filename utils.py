@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 from exceptions import NotFreeSpace, NotFreeForItems, NotNecessaryQuantuty, NotThisProduct
 
-simafor = True
-
 class Storage(ABC):
 
     @abstractmethod
