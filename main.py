@@ -5,7 +5,6 @@ from service import Requests
 from utils import Shop, Store
 
 print("\nВас приветствует логистическая программа!\n")
-sim = False
 shop = Shop()
 store = Store()
 
