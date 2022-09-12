@@ -35,6 +35,7 @@ while True:
                         store.remove(enter_value[2], int(enter_value[1]))
                 else:
                     raise NotThisProduct
+
             print(f"Курьер забирает {data['amount']} {data['product']} из {data['from']}")
             print(f"Курьер везет {enter_value[1]} {enter_value[2]} с {enter_value[4]} в {enter_value[6]}")
             print(f"Курьер доставил {enter_value[1]} {enter_value[2]} в {enter_value[6]}\n")
@@ -56,5 +57,5 @@ while True:
             print(error.message)
         continue
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=False)
