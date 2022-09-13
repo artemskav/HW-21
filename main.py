@@ -1,5 +1,3 @@
-import app as app
-
 from exceptions import NotFreeSpace, NotFreeForItems, NotNecessaryQuantuty, NotThisProduct, NoValidSpace
 from service import Requests
 from utils import Shop, Store
@@ -18,7 +16,6 @@ while True:
         break
     elif len(enter_value) < 7 or enter_value[0] != "доставить" or enter_value[3] != "из" or enter_value[5] != "в":
         print("Запрос не соотверствует шаблону, повторите ввод.")
-        continue
     else:
         try:
             req = Requests(enter_value)
@@ -55,7 +52,4 @@ while True:
             print(error.message)
         except NoValidSpace as error:
             print(error.message)
-        continue
 
-# if __name__ == "__main__":
-#     app.run(debug=False)

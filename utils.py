@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from exceptions import NotFreeSpace, NotFreeForItems, NotNecessaryQuantuty, NotThisProduct
 
+
 class Storage(ABC):
 
     @abstractmethod
@@ -22,6 +23,7 @@ class Storage(ABC):
     @abstractmethod
     def _get_unique_items_count(self):
         pass
+
 
 class Store(Storage):
     __items = {"печеньки": 20, "собачки": 20, "коробки": 20, "свинки": 5, "кошечки": 5}
