@@ -42,14 +42,7 @@ while True:
             print(f"\nВ магазин хранится:")
             for k, v in shop.get_items().items():
                 print(f"{k}: {v}")
-        except NotFreeSpace as error:
-            print(error.message)
-        except NotFreeForItems as error:
-            print(error.message)
-        except NotNecessaryQuantuty as error:
-            print(error.message)
-        except NotThisProduct as error:
-            print(error.message)
-        except NoValidSpace as error:
+        except (NotFreeSpace, NotFreeForItems, NotNecessaryQuantuty,
+                NotThisProduct, NoValidSpace) as error:
             print(error.message)
 
