@@ -32,14 +32,11 @@ class Store(Storage):
     def add(self, title, quantity: int):
         if self._get_free_space() < quantity:
             raise NotFreeSpace
-        elif len(self.__items) == 0:
+        elif len(self.__items) == 0 or title not in self.__items:
             self.__items[title] = quantity
             return True
         elif title in self.__items:
             self.__items[title] += quantity
-            return True
-        elif title not in self.__items:
-            self.__items[title] = quantity
             return True
 
     def remove(self, title, quantity: int):
@@ -72,7 +69,7 @@ class Shop(Storage):
     def add(self, title, quantity: int):
         if self._get_free_space() < quantity:
             raise NotFreeSpace
-        elif len(self.__items) == 0:
+        elif len(self.__items) == 0 or title not in self.__items:
             self.__items[title] = quantity
             return True
         elif title in self.__items:
@@ -80,9 +77,6 @@ class Shop(Storage):
             return True
         elif self._get_unique_items_count() == 5:
             raise NotFreeForItems
-        elif title not in self.__items:
-            self.__items[title] = quantity
-            return True
         elif self._get_unique_items_count() < 5:
             for item in self.__items:
                 if item == title:
